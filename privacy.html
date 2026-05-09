@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>律疏 - 隐私政策</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 680px; margin: 60px auto; padding: 0 24px; color: #1d1d1f; line-height: 1.8; }
+  h1 { font-size: 26px; font-weight: 700; }
+  h2 { font-size: 17px; font-weight: 600; margin-top: 36px; border-bottom: 1px solid #e5e5e5; padding-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  td, th { border: 1px solid #d2d2d7; padding: 8px 12px; font-size: 14px; }
+  th { background: #f5f5f7; font-weight: 600; }
+  .meta { color: #6e6e73; font-size: 14px; }
+  a { color: #60AFFF; }
+  .back { display: inline-block; margin-bottom: 32px; color: #60AFFF; text-decoration: none; font-size: 14px; }
+</style>
+</head>
+<body>
+  <a class="back" href="index.html">← 返回</a>
+  <h1>律疏隐私政策</h1>
+  <p class="meta">最后更新：2026年5月</p>
+
+  <h2>一、基本说明</h2>
+  <p>律疏（以下简称"本应用"）是一款中国法律法规检索与咨询工具。我们高度重视用户隐私，本政策说明本应用收集、使用和存储哪些数据。</p>
+
+  <h2>二、数据收集</h2>
+  <p><strong>本应用不收集任何个人信息。</strong></p>
+  <ul>
+    <li>不需要注册账号，不收集姓名、手机号、邮箱</li>
+    <li>不收集位置信息</li>
+    <li>不收集设备标识符用于追踪</li>
+    <li>不使用第三方广告 SDK</li>
+    <li>不向任何服务器上传用户的使用数据或问答内容</li>
+  </ul>
+
+  <h2>三、本地存储数据</h2>
+  <p>以下数据仅存储在您的设备本地或您的个人 iCloud 账户中，由您完全控制：</p>
+  <table>
+    <tr><th>数据</th><th>存储位置</th><th>用途</th></tr>
+    <tr><td>上次阅读记录（法律 ID + 条文号）</td><td>iCloud KV Store</td><td>启动时恢复阅读位置</td></tr>
+    <tr><td>法律顾问对话历史</td><td>iCloud Documents</td><td>跨设备同步对话记录</td></tr>
+    <tr><td>App 偏好设置</td><td>设备本地 UserDefaults</td><td>记住用户的显示偏好</td></tr>
+    <tr><td>DeepSeek API Key</td><td>设备本地 Keychain</td><td>调用 AI 服务时使用</td></tr>
+  </table>
+
+  <h2>四、AI 法律顾问功能</h2>
+  <p>使用 AI 法律顾问功能时：</p>
+  <ul>
+    <li>您需要提供自己的 <strong>DeepSeek API Key</strong>，该 Key 仅存储在您设备的 Keychain 中，不会上传至任何服务器</li>
+    <li>您输入的问题和 AI 返回的回答<strong>直接在您的设备与 DeepSeek 服务器之间传输</strong>，本应用不经手、不存储、不分析这些内容</li>
+    <li>DeepSeek 的数据处理方式请参阅其隐私政策：<a href="https://www.deepseek.com/privacy" target="_blank">deepseek.com/privacy</a></li>
+  </ul>
+
+  <h2>五、法律数据库</h2>
+  <p>本应用内置的法律法规数据库随 App 安装包分发，<strong>完全离线可用</strong>，不涉及任何网络请求或数据上传。</p>
+
+  <h2>六、iCloud 同步</h2>
+  <p>若您的设备已登录 Apple ID 并开启 iCloud：</p>
+  <ul>
+    <li>阅读记录和对话历史会通过您的个人 iCloud 账户在您的设备间同步</li>
+    <li>这些数据受 Apple 的隐私政策保护，本应用无法访问其他用户的 iCloud 数据</li>
+  </ul>
+
+  <h2>七、儿童隐私</h2>
+  <p>本应用不针对 13 岁以下儿童，亦不故意收集儿童个人信息。</p>
+
+  <h2>八、联系方式</h2>
+  <p>如有隐私相关问题，请联系：<br>
+  邮箱：<a href="mailto:support@lushu.app">support@lushu.app</a></p>
+
+  <h2>九、政策更新</h2>
+  <p>如本隐私政策发生变更，我们将在 App 更新说明中告知。继续使用本应用即视为接受更新后的政策。</p>
+</body>
+</html>
