@@ -1,0 +1,7 @@
+• Cloud Share — upload your teams and games to generate a share link; others import with one UUID
+• Cloud Share upload progress bar, split metadata and photos to avoid size limits, re-upload support
+• Cloud Share Import — clipboard UUID auto-detection with alert
+• Voice Tutorial — improved task ordering, success rate now correctly counts all attempts
+• Tutorial players no longer appear in player management or cloud share picker
+• Game Detail — smoother navigation with async loading indicator
+• Bug fixes and performance improvements

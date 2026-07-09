@@ -1,0 +1,85 @@
+default_platform(:ios)
+
+def resolve_api_key
+  candidates = [
+    { id: "5S6Z4A6475", path: "/Users/doxie/Downloads/AuthKey_5S6Z4A6475.p8" },
+    { id: "5S6Z4A6475", path: "/Users/xiedongze/Downloads/AuthKey_5S6Z4A6475.p8" },
+    { id: "JHM8W2D4BX", path: "/Users/xiedongze/Downloads/AuthKey_JHM8W2D4BX.p8" },
+    { id: "TD5N27BDJA", path: "/Users/xiedongze/Downloads/AuthKey_TD5N27BDJA.p8" },
+  ]
+  candidates.each do |c|
+    if File.exist?(c[:path])
+      UI.message("Using API key: #{c[:id]} (#{c[:path]})")
+      return c[:id], c[:path]
+    end
+  end
+
+  # fallback: scan ~/Downloads for any AuthKey_*.p8
+  Dir["#{Dir.home}/Downloads/AuthKey_*.p8"].each do |f|
+    m = f.match(/AuthKey_(\w+)\.p8$/)
+    if m
+      UI.message("Falling back to API key: #{m[1]} (#{f})")
+      return m[1], f
+    end
+  end
+
+  UI.user_error!("Could not find App Store Connect API key (.p8) in any known location")
+end
+
+platform :ios do
+  desc "Upload metadata for a specific version to App Store Connect"
+  lane :upload_metadata do |options|
+    version = options[:version] || "1.20"
+
+    key_id, key_filepath = resolve_api_key
+
+    api_key = app_store_connect_api_key(
+      key_id: key_id,
+      issuer_id: "50853c64-5d54-42f0-85aa-a6e291d5066b",
+      key_filepath: key_filepath
+    )
+
+    deliver(
+      force: true,
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_app_version_update: true,
+      app_version: version,
+      submit_for_review: false,
+      automatic_release: false,
+      metadata_path: "fastlane/metadata/#{version}",
+      api_key: api_key,
+      precheck_include_in_app_purchases: false
+    )
+  end
+
+  desc "Release an approved version to the App Store"
+  lane :release do |options|
+    version = options[:version] || "1.20"
+
+    key_id, key_filepath = resolve_api_key
+
+    api_key = app_store_connect_api_key(
+      key_id: key_id,
+      issuer_id: "50853c64-5d54-42f0-85aa-a6e291d5066b",
+      key_filepath: key_filepath
+    )
+
+    app = Spaceship::ConnectAPI::App.find("com.xiedongze.BasketballRecord")
+    app_store_version = app.get_app_store_versions.select { |v| v.version_string == version }.first
+
+    if app_store_version.nil?
+      UI.error("Version #{version} not found")
+      next
+    end
+
+    UI.message("Version #{version} state: #{app_store_version.app_store_state}")
+
+    if app_store_version.app_store_state == "READY_FOR_DISTRIBUTION"
+      app_store_version.release_to_all_users!
+      UI.success("Version #{version} released! ✅")
+    else
+      UI.error("Cannot release - current state: #{app_store_version.app_store_state}")
+    end
+  end
+end

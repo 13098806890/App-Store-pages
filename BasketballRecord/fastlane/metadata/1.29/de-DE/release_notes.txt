@@ -1,0 +1,7 @@
+• Cloud-Freigabe — laden Sie Ihre Teams und Spiele hoch, um einen Freigabelink zu erstellen; andere importieren mit einer UUID
+• Cloud-Freigabe Fortschrittsbalken, getrenntes Hochladen von Metadaten und Fotos, erneutes Hochladen unterstützt
+• Cloud-Freigabe Import — automatische UUID-Erkennung aus Zwischenablage mit Hinweis
+• Sprach-Tutorial — verbesserte Aufgabenreihenfolge, Erfolgsquote zählt jetzt alle Versuche korrekt
+• Tutorial-Spieler erscheinen nicht mehr in der Spielerverwaltung oder Cloud-Auswahl
+• Spiel-Details — flüssigere Navigation mit asynchronem Ladeindikator
+• Fehlerbehebungen und Leistungsverbesserungen

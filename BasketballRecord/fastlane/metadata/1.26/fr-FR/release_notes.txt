@@ -1,0 +1,7 @@
+• Statistiques séparées pour les rebonds offensifs et défensifs
+• Commandes vocales combinées : "passe + tir" ou "interception + perte" en une seule fois
+• Tutoriel vocal étendu à 27 tâches, avec exercices de rebonds O/D
+• Mode rebond O/D : activable dans les paramètres de match, disposition ajustée automatiquement
+• Les stats d'équipe affichent désormais la répartition OREB/DREB
+• Amélioration de la reconnaissance des mots-clés — espaces flexibles pour les commandes multi-mots
+• Corrections de bugs et améliorations de stabilité

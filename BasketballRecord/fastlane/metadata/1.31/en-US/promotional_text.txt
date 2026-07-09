@@ -1,0 +1,1 @@
+Composite events: assist+shot and steal+turnover in one entry. Overtime support. AI score timeline. ELO based on real opponent ratings.

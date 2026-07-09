@@ -1,0 +1,7 @@
+• Partage cloud — téléchargez vos équipes et matchs pour générer un lien de partage; les autres importent avec un UUID
+• Barre de progression de téléchargement, métadonnées et photos séparées pour éviter les limites de taille, rechargement possible
+• Importation cloud — détection automatique de l'UUID dans le presse-papiers avec alerte
+• Tutoriel vocal — ordre des tâches amélioré, taux de succès compte désormais tous les essais
+• Les joueurs du tutoriel n'apparaissent plus dans la gestion des joueurs ni dans le sélecteur cloud
+• Détails du match — navigation plus fluide avec indicateur de chargement asynchrone
+• Corrections de bugs et améliorations de performances
