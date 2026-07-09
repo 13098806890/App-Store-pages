@@ -6,23 +6,24 @@
   <title>App Pages</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #1d1d1f; background: #f5f5f7; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; }
+    body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #1d1d1f; background: #f5f5f7; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 40px 24px; }
     h1 { font-size: 32px; font-weight: 700; margin-bottom: 40px; text-align: center; }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 720px; width: 100%; }
-    .card { background: #fff; border-radius: 18px; padding: 32px; box-shadow: 0 1px 4px rgba(0,0,0,.04); text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; border: 1px solid rgba(0,0,0,.05); }
+    .card { background: #fff; border-radius: 18px; padding: 32px; box-shadow: 0 1px 4px rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.05); cursor: pointer; transition: transform .2s, box-shadow .2s; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
     .card h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
     .card p { font-size: 15px; color: #6e6e73; line-height: 1.6; margin-bottom: 16px; }
-    .card .links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .card .links a { display: inline-block; font-size: 13px; color: #0071e3; text-decoration: none; padding: 6px 14px; border-radius: 20px; background: #f0f7ff; transition: background .15s; }
-    .card .links a:hover { background: #e0efff; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .links a { display: inline-block; font-size: 13px; color: #0071e3; text-decoration: none; padding: 6px 14px; border-radius: 20px; background: #f0f7ff; transition: background .15s; }
+    .links a:hover { background: #e0efff; }
     footer { margin-top: 48px; font-size: 13px; color: #6e6e73; text-align: center; }
+    footer a { color: #0071e3; text-decoration: none; }
   </style>
 </head>
 <body>
   <h1>App Store Pages</h1>
   <div class="cards">
-    <a class="card" href="BasketballRecord/">
+    <div class="card" onclick="location.href='BasketballRecord/'">
       <h2>🏀 篮球生涯<br><small style="font-weight:400;font-size:15px;color:#6e6e73;">Basketball Career</small></h2>
       <p>篮球比赛记录与生涯统计 App 的隐私政策、使用条款和支持页面。</p>
       <div class="links" onclick="event.stopPropagation()">
@@ -31,8 +32,8 @@
         <a href="BasketballRecord/terms-of-use.html">使用条款</a>
         <a href="BasketballRecord/support.html">支持</a>
       </div>
-    </a>
-    <a class="card" href="ChineseLawsSearch/">
+    </div>
+    <div class="card" onclick="location.href='ChineseLawsSearch/'">
       <h2>⚖️ 律疏<br><small style="font-weight:400;font-size:15px;color:#6e6e73;">ChineseLawsSearch</small></h2>
       <p>中国法律法规检索与 AI 法律顾问 App 的隐私政策、用户协议和支持页面。</p>
       <div class="links" onclick="event.stopPropagation()">
@@ -41,10 +42,10 @@
         <a href="ChineseLawsSearch/terms.html">用户协议</a>
         <a href="ChineseLawsSearch/support.html">支持</a>
       </div>
-    </a>
+    </div>
   </div>
   <footer>
-    <p>© 2025-2026 谢东泽 &middot; <a href="https://github.com/13098806890/App-Store-pages" style="color:#0071e3;text-decoration:none;">GitHub</a></p>
+    <p>© 2025-2026 谢东泽 &middot; <a href="https://github.com/13098806890/App-Store-pages">GitHub</a></p>
   </footer>
 </body>
 </html>
