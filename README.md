@@ -1,44 +1,37 @@
-# 律疏 · 中国法律助手
+# App Store Pages
 
-**iPhone / iPad · 免费下载**
+本仓库统一托管多个 iOS App 的 App Store 公开页面（隐私政策、支持页面、使用条款等），通过 GitHub Pages 发布。
 
----
+## 目录结构
 
-## 遇到法律问题，不知道该怎么办？
+```
+├── index.html                  # 门户首页
+├── BasketballRecord/           # 🏀 篮球生涯 (Basketball Career)
+│   ├── index.html              # App 介绍页
+│   ├── privacy-policy.html     # 隐私政策 (多语言)
+│   ├── privacy-policy.md
+│   ├── terms-of-use.html       # 使用条款 / EULA (多语言)
+│   ├── terms-of-use.md
+│   ├── support.html            # 支持与 FAQ (多语言)
+│   ├── support.md
+│   └── appicon.png
+└── ChineseLawsSearch/          # ⚖️ 律疏 (ChineseLawsSearch)
+    ├── index.html              # App 介绍页
+    ├── privacy.html            # 隐私政策
+    ├── terms.html              # 用户服务协议
+    └── support.html            # 支持与 FAQ
+```
 
-律疏是一款中文法律助手，收录现行法律法规 1500 余部，并配备由 38 位细分领域专家组成的 AI 顾问团队。无论是日常纠纷、劳动争议、合同问题还是刑事咨询，用口语描述你的情况，律疏会自动找到相关法条、给出有依据的法律意见。
+## 各 App 信息
 
----
+| App | App Store ID | Bundle ID |
+|-----|-------------|-----------|
+| 篮球生涯 (Basketball Career) | 6773215187 | - |
+| 律疏 (ChineseLawsSearch) | - | - |
 
-## 功能
+## GitHub Pages
 
-### 法律法规检索
-- 收录宪法、民法典、刑法、劳动法等 1500 余部现行法律法规及司法解释
-- 按法律部门分类浏览，支持全文搜索（法律名称 + 条文内容）
-- 关键词高亮、条文间交叉引用、一键跳转
+本站通过 GitHub Pages 发布，地址为：
+https://13098806890.github.io/App-Store-pages/
 
-### AI 法律咨询
-- 用自己的话描述问题，无需法律术语
-- 系统自动分析案情，匹配最相关的专家领域
-- 回答附带具体法条依据，可直接点击查看原文
-- 支持多轮追问，上下文连贯
-
-### 专家覆盖领域
-合同纠纷 · 买卖 · 租赁 · 借款 · 建设工程 · 离婚财产 · 子女抚养 · 继承遗嘱 · 侵权赔偿 · 医疗损害 · 交通事故 · 劳动合同 · 工伤 · 消费者权益 · 公司商事 · 刑事犯罪 · 行政诉讼 · 民事诉讼……
-
----
-
-## 免费使用
-
-每日提供免费咨询次数，满足日常法律问题查询需求。
-
----
-
-## 隐私与数据
-
-- [隐私政策](https://13098806890.github.io/lushu-legal/privacy.html)
-- [用户协议](https://13098806890.github.io/lushu-legal/terms.html)
-
----
-
-*法律信息仅供参考，不构成正式法律意见。如涉及重大法律事务，请咨询执业律师。*
+在 App Store Connect 中填写各 App 的隐私政策、支持页面 URL 时，使用对应子目录中的页面地址。
