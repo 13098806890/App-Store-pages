@@ -7,6 +7,10 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #1d1d1f; background: #fff; }
+    .lang-bar { text-align: right; padding: 12px 24px; }
+    .lang-bar select { padding: 4px 10px; font-size: .9em; border-radius: 6px; border: 1px solid #ccc; outline: none; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
     header { background: #f5f5f7; padding: 48px 24px 36px; text-align: center; }
     header h1 { font-size: 36px; font-weight: 700; }
     header p { font-size: 17px; color: #6e6e73; margin-top: 8px; }
@@ -24,16 +28,40 @@
     footer { text-align: center; padding: 32px 24px; font-size: 13px; color: #6e6e73; }
     footer a { color: #0071e3; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111; color: #ddd; }
+      .lang-bar select { background: #222; color: #ddd; border-color: #444; }
+      header { background: #1a1a1a; }
+      .faq-item { border-color: #333; }
+      .faq-item p { color: #999; }
+      .contact { background: #1a1a1a; }
+      .contact p { color: #999; }
+    }
   </style>
 </head>
 <body>
 
+<div class="lang-bar">
+  <select id="langSelect" onchange="switchLang(this.value)">
+    <option value="zh-Hans">简体中文</option>
+    <option value="en">English</option>
+  </select>
+</div>
+
 <header>
-  <h1>支持与帮助</h1>
-  <p>律疏 · 中国法律法规查询与AI咨询</p>
+  <div class="lang-content active" id="header-zh-Hans">
+    <h1>支持与帮助</h1>
+    <p>律疏 · 中国法律法规查询与AI咨询</p>
+  </div>
+  <div class="lang-content" id="header-en">
+    <h1>Support &amp; Help</h1>
+    <p>Lvshu · Chinese Law Search &amp; AI Consultation</p>
+  </div>
 </header>
 
 <section>
+
+<div class="lang-content active" id="faq-zh-Hans">
   <div class="faq">
     <h2>常见问题</h2>
 
@@ -77,12 +105,80 @@
     <p>以上未能解决您的问题？<br />欢迎通过邮件联系我们，我们会尽快回复。</p>
     <a href="mailto:classicalxie@163.com">发送邮件</a>
   </div>
+</div>
+
+<div class="lang-content" id="faq-en">
+  <div class="faq">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <h3>Why can't I use the AI Legal Advisor?</h3>
+      <p>The AI Legal Advisor requires a DeepSeek API Key. Go to Settings and paste your Key in the "DeepSeek API Key" field, then tap "Verify &amp; Save". New DeepSeek users receive free credits to get started.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I get a DeepSeek API Key?</h3>
+      <p>Visit platform.deepseek.com, create an account, and generate a Key in the "API Keys" page. New users receive free credits with no upfront payment required.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is my API Key safe?</h3>
+      <p>Your API Key is encrypted and stored in the system Keychain (with optional iCloud Keychain sync). It is never uploaded to any third-party server. When you use AI consultation, your questions are sent directly to DeepSeek without intermediation or storage by Lvshu.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does the legal database require internet access?</h3>
+      <p>No. All 1,526 laws and regulations are bundled within the app and work fully offline for browsing and full-text search. Only the AI consultation feature requires internet access to call DeepSeek's API.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How often is the legal data updated?</h3>
+      <p>The data is sourced from the National Laws and Regulations Database, covering legislation effective as of the app's release. Updates are delivered through app version updates.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>iCloud sync isn't working — what should I do?</h3>
+      <p>Make sure your device is signed into iCloud and that "iCloud Drive" is enabled in Settings → Apple ID → iCloud. Reading progress and chat history sync depend on iCloud services.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why can't I find what I'm searching for?</h3>
+      <p>Full-text search requires at least 3 characters. Try using specific legal terminology such as "contract termination" or "labor compensation". You can also disable "Search titles only" in Settings to search within article content.</p>
+    </div>
+  </div>
+
+  <div class="contact">
+    <p>Still need help?<br />Contact us via email and we'll get back to you as soon as possible.</p>
+    <a href="mailto:classicalxie@163.com">Send Email</a>
+  </div>
+</div>
+
 </section>
 
 <footer>
-  <p><a href="index.html">返回首页</a> &nbsp;·&nbsp; <a href="privacy.html">隐私政策</a></p>
-  <p style="margin-top: 12px;">© 2025 谢东泽</p>
+  <div class="lang-content active" id="footer-zh-Hans">
+    <p><a href="index.html">返回首页</a> &nbsp;·&nbsp; <a href="privacy.html">隐私政策</a></p>
+  </div>
+  <div class="lang-content" id="footer-en">
+    <p><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+  </div>
+  <p style="margin-top: 12px;">&copy; 2025 谢东泽</p>
 </footer>
+
+<script>
+function switchLang(code) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#header-' + code + ', #faq-' + code + ', #footer-' + code).forEach(el => el.classList.add('active'));
+  document.getElementById('langSelect').value = code;
+  localStorage.setItem('lushuLang', code);
+}
+(function() {
+  const saved = localStorage.getItem('lushuLang');
+  const preferred = saved || navigator.language || 'zh-Hans';
+  const code = preferred.startsWith('zh') ? 'zh-Hans' : 'en';
+  switchLang(code);
+})();
+</script>
 
 </body>
 </html>

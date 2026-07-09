@@ -3,28 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>隐私政策 — 律疏</title>
+  <title>Privacy Policy — 律疏</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #1d1d1f; background: #fff; }
+    .lang-bar { text-align: right; padding: 12px 24px; }
+    .lang-bar select { padding: 4px 10px; font-size: .9em; border-radius: 6px; border: 1px solid #ccc; outline: none; }
     header { background: #f5f5f7; padding: 48px 24px 36px; text-align: center; }
     header h1 { font-size: 36px; font-weight: 700; }
     header p { font-size: 15px; color: #6e6e73; margin-top: 8px; }
     section { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
     h2 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; }
     p { font-size: 15px; color: #3d3d3f; line-height: 1.8; margin-bottom: 12px; }
     footer { text-align: center; padding: 32px 24px; font-size: 13px; color: #6e6e73; border-top: 1px solid #e5e5ea; }
     footer a { color: #0071e3; text-decoration: none; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111; color: #ddd; }
+      .lang-bar select { background: #222; color: #ddd; border-color: #444; }
+      header { background: #1a1a1a; }
+      h2 { color: #e0e0e0; }
+      p { color: #ccc; }
+      footer { border-color: #333; }
+    }
   </style>
 </head>
 <body>
 
+<div class="lang-bar">
+  <select id="langSelect" onchange="switchLang(this.value)">
+    <option value="zh-Hans">简体中文</option>
+    <option value="en">English</option>
+  </select>
+</div>
+
 <header>
-  <h1>隐私政策</h1>
-  <p>最后更新：2025年5月</p>
+  <div class="lang-content active" id="header-zh-Hans">
+    <h1>隐私政策</h1>
+    <p>最后更新：2025年5月</p>
+  </div>
+  <div class="lang-content" id="header-en">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: May 2025</p>
+  </div>
 </header>
 
 <section>
+<div class="lang-content active" id="content-zh-Hans">
   <p>律疏（以下简称「本应用」）尊重并保护用户隐私。本政策说明本应用如何处理您的数据。</p>
 
   <h2>一、我们不收集的数据</h2>
@@ -49,12 +75,60 @@
   <h2>六、联系我们</h2>
   <p>如对本隐私政策有任何疑问，请通过以下方式联系：</p>
   <p>邮箱：<a href="mailto:classicalxie@163.com">classicalxie@163.com</a></p>
+</div>
+
+<div class="lang-content" id="content-en">
+  <p>Lvshu (hereinafter referred to as "this app") respects and protects user privacy. This policy explains how we handle your data.</p>
+
+  <h2>1. Data We Do NOT Collect</h2>
+  <p>This app does not collect, store, or upload any personally identifiable information. We operate no servers, create no user accounts, and track no user behavior.</p>
+
+  <h2>2. Locally Stored Data</h2>
+  <p>The following data is stored only on your device or in your personal iCloud account, and is inaccessible to us:</p>
+  <p>· <strong>API Key</strong>: Your DeepSeek API Key is encrypted and stored in the system Keychain, with optional iCloud Keychain sync.</p>
+  <p>· <strong>Reading History</strong>: Your reading position and history are stored in iCloud Key-Value Store, accessible only to you.</p>
+  <p>· <strong>Chat History</strong>: AI consultation conversations are stored in iCloud Documents, accessible only to you.</p>
+  <p>· <strong>App Settings</strong>: Interface preferences are stored in local UserDefaults.</p>
+
+  <h2>3. AI Consultation &amp; Third-Party Services</h2>
+  <p>When using the AI legal advisor feature, your questions are sent directly from your device to DeepSeek's API. Lvshu does not intermediate, store, or analyze this data. Please refer to DeepSeek's privacy policy for their data handling practices.</p>
+
+  <h2>4. Legal Data</h2>
+  <p>The built-in legal database is sourced from the National Laws and Regulations Database, comprising public government documents. This data is stored entirely on your device and accessible offline.</p>
+
+  <h2>5. Children's Privacy</h2>
+  <p>This app is not directed at children under 13 and does not knowingly collect personal information from children.</p>
+
+  <h2>6. Contact Us</h2>
+  <p>If you have any questions about this privacy policy, please contact us at:</p>
+  <p>Email: <a href="mailto:classicalxie@163.com">classicalxie@163.com</a></p>
+</div>
 </section>
 
 <footer>
-  <p><a href="index.html">返回首页</a> &nbsp;·&nbsp; <a href="support.html">支持与帮助</a></p>
-  <p style="margin-top: 12px;">© 2025 谢东泽</p>
+  <div class="lang-content active" id="footer-zh-Hans">
+    <p><a href="index.html">返回首页</a> &nbsp;·&nbsp; <a href="support.html">支持与帮助</a></p>
+  </div>
+  <div class="lang-content" id="footer-en">
+    <p><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+  </div>
+  <p style="margin-top: 12px;">&copy; 2025 谢东泽</p>
 </footer>
+
+<script>
+function switchLang(code) {
+  document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#header-' + code + ', #content-' + code + ', #footer-' + code).forEach(el => el.classList.add('active'));
+  document.getElementById('langSelect').value = code;
+  localStorage.setItem('lushuLang', code);
+}
+(function() {
+  const saved = localStorage.getItem('lushuLang');
+  const preferred = saved || navigator.language || 'zh-Hans';
+  const code = preferred.startsWith('zh') ? 'zh-Hans' : 'en';
+  switchLang(code);
+})();
+</script>
 
 </body>
 </html>
