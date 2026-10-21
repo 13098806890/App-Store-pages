@@ -47,10 +47,37 @@ const pages = {
   }
 };
 
+pages["zh-Hant"] = {
+  privacy: { eyebrow: "隱私", title: "隱私權政策", intro: "PhotoRoll 協助你檢查和整理照片圖庫。照片分析、整理進度和整理記錄都會在你的裝置上處理與保存。PhotoRoll 不會將你的照片或影片上傳至 PhotoRoll 伺服器。", updated: "最後更新：2026 年 10 月 21 日", sections: [
+    ["資訊與媒體", "PhotoRoll 不要求建立帳號。只有在你授權並使用需要圖庫權限的功能時，App 才會存取照片和影片。照片篩選、相似度分析和整理記錄都會在本機處理。PhotoRoll 不會將照片或影片內容上傳至自己的伺服器。"],
+    ["位置資訊", "如果照片包含位置資訊，或你使用受保護地點建議功能，Apple 地理編碼服務可能會收到照片座標以顯示地點名稱。照片或影片影像內容不會傳送至該服務。"],
+    ["iCloud 照片", "如果你允許 PhotoRoll 下載原始檔，系統照片圖庫可能透過網路從 iCloud 下載照片或影片原始檔。這可能使用網路或行動數據。你可以在 PhotoRoll 設定中關閉此選項。"],
+    ["本機資料與刪除", "瀏覽進度、偏好設定和整理記錄會儲存在你的裝置上，PhotoRoll 不會將這些資料同步至其他裝置。刪除 App 可能會移除僅儲存在本機的資料。放入待刪除區域的照片會繼續保留在照片圖庫中，直到你透過系統照片刪除流程確認刪除。"],
+    ["政策更新與聯絡", "如果 App 功能或資料處理方式有所變更，我們可能會更新本政策。如有隱私問題，請寄送電子郵件至 <a href=\"mailto:classicalxie@163.com\">classicalxie@163.com</a>。"]
+  ] },
+  support: { eyebrow: "支援", title: "PhotoRoll 使用說明", intro: "查看照片存取、iCloud 下載和整理照片的常見問題。", faqTitle: "常見問題", contactTitle: "聯絡我們", contactText: "如需協助或回報問題，請寄送電子郵件並說明遇到的情況，以及裝置型號和 iOS 版本。除非確有需要且你願意分享，請勿附上私人照片。", faqs: [
+    ["為什麼有些照片沒有顯示？", "請在 iOS 設定中檢查 PhotoRoll 的照片存取權限。如果你授予的是有限存取權限，可以在 PhotoRoll 設定中的「照片權限」新增更多照片。"],
+    ["為什麼 iCloud 照片無法預覽？", "請檢查網路連線，並確認 PhotoRoll 設定中的「iCloud 下載」已開啟。下載較大的原始檔可能需要一些時間，也可能使用行動數據。"],
+    ["標記照片後會立即刪除嗎？", "不會。標記待刪除的照片會繼續保留在照片圖庫中，直到你在待刪除區域檢查並確認刪除。最終刪除由系統照片圖庫處理。"],
+    ["為什麼預估空間和實際釋出空間不同？", "照片大小和 iCloud 下載情況可能只能估算。實際可用空間可能不同，iOS 更新空間顯示也可能需要一些時間。"]
+  ] },
+  terms: { eyebrow: "條款", title: "使用條款", intro: "使用 PhotoRoll 即表示你同意以下條款。如果你不同意，請勿使用本 App。", updated: "最後更新：2026 年 10 月 21 日", sections: [
+    ["使用 PhotoRoll", "PhotoRoll 提供瀏覽、比較、篩選和整理照片的工具。你必須擁有存取和管理所用媒體的權利，並對自己的操作選擇及圖庫內容負責。"],
+    ["估算與建議", "相似照片分組、分析結果、檔案大小和預估節省空間僅供參考，可能不完整或有誤差。請檢查相關項目，並以系統照片圖庫顯示的最終狀態為準。"],
+    ["刪除需要你確認", "標記待刪除的項目會繼續留在圖庫中，直到你檢查並確認刪除。確認後能否復原，取決於系統照片圖庫及其「最近刪除」狀態。請為需要保留的內容另行備份。"],
+    ["第三方服務", "PhotoRoll 可能會使用 Apple 照片、iCloud 和 Apple 地理編碼服務。這些服務由 Apple 提供，並受 Apple 適用的條款和隱私做法約束。網路費用由你的服務提供者決定。"],
+    ["功能變更與責任", "PhotoRoll 更新時，功能可能有所變更。在適用法律允許的範圍內，PhotoRoll 依現狀提供，不保證每項分析或估算都沒有誤差。本條款不限制適用法律規定不得限制的權利。"],
+    ["聯絡", "如有條款相關問題，請寄送電子郵件至 <a href=\"mailto:classicalxie@163.com\">classicalxie@163.com</a>。"]
+  ] }
+};
+
 const page = document.body.dataset.page;
 const params = new URLSearchParams(location.search);
 const requested = params.get("lang") || navigator.language;
-const language = requested.toLowerCase().startsWith("zh") ? "zh-Hans" : "en";
+const normalizedLanguage = requested.toLowerCase();
+const language = ["zh-hant", "zh-tw", "zh-hk", "zh-mo"].some(code => normalizedLanguage.startsWith(code))
+  ? "zh-Hant"
+  : normalizedLanguage.startsWith("zh") ? "zh-Hans" : "en";
 const copy = pages[language][page];
 document.documentElement.lang = language;
 document.documentElement.dir = "ltr";
