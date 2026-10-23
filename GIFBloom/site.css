@@ -181,5 +181,13 @@ html[dir="rtl"] .faq p { padding-right: 0; padding-left: 30px; }
 .sticker-burst { position: absolute; color: #fff; text-shadow: 0 3px 12px rgba(69,52,125,.28); }
 .burst-one { top: 48px; left: 25px; font-size: 1.9rem; transform: rotate(-12deg); }
 .burst-two { right: 7px; bottom: 39px; font-size: 2.2rem; transform: rotate(13deg); }
+.hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:27px; }
+.hero-actions .support-link { margin-top:0; }
+.app-store-link { display:inline-flex; min-height:50px; align-items:center; gap:10px; padding:10px 15px; border:1px solid #35343b; border-radius:13px; color:#fff; background:#19191d; text-decoration:none; font-size:.93rem; font-weight:700; box-shadow:0 9px 23px rgba(26,24,38,.16); transition:transform .18s,background .18s,box-shadow .18s; }
+.app-store-link:hover { color:#fff; background:#302e37; box-shadow:0 13px 28px rgba(26,24,38,.2); transform:translateY(-2px); }
+.app-store-link:focus-visible { outline:3px solid #9b8be7; outline-offset:3px; }
+.app-store-link svg { flex:0 0 24px; width:24px; height:24px; fill:currentColor; }
+.external-mark { margin-inline-start:3px; color:#c9c4d7; font-size:.9rem; }
 @media(max-width:760px){.hero-art{min-height:420px;margin-top:4px}.sticker-phone{transform:scale(.95) rotate(-4deg)}.save-toast{right:-41px}.sticker-tray{right:-10px}}
 @media(max-width:410px){.hero-art{min-height:380px}.sticker-phone{transform:scale(.87) rotate(-4deg)}.save-toast{right:-40px}.burst-one{left:4px}.burst-two{right:-5px}}
+@media(max-width:760px){.hero-actions{gap:10px}.app-store-link{min-height:48px;padding:9px 12px;font-size:.84rem}.hero-actions .support-link{padding:10px 13px;font-size:.9rem}}
