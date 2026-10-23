@@ -17,16 +17,17 @@ html { background:var(--wash); scroll-behavior:smooth; }
 body { margin:0; color:var(--ink); background:var(--wash); line-height:1.65; }
 .lang-content { display:none; }
 .lang-content.active { display:block; }
-.lang-bar { position:absolute; top:20px; right:24px; z-index:10; }
+.lang-bar { position:relative; z-index:10; display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; padding:15px 26px; }
+.lang-bar::before { content:"Basketball Career"; color:var(--ink); font-size:1.03rem; font-weight:760; letter-spacing:-.04em; }
 .lang-bar select { max-width:180px; padding:9px 30px 9px 12px; border:1px solid rgba(255,255,255,.65); border-radius:12px; color:var(--ink); background:rgba(255,255,255,.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font:inherit; font-size:.88rem; outline:none; cursor:pointer; }
 .lang-bar select option { color:#233047; background:#fff; }
-.hero { position:relative; isolation:isolate; overflow:hidden; max-width:1200px; min-height:420px; margin:0 auto; padding:86px 24px 76px; border-radius:0 0 36px 36px; color:var(--ink); text-align:center; background:radial-gradient(circle at 78% 28%,rgba(255,206,170,.72),transparent 25%),radial-gradient(circle at 20% 80%,rgba(203,222,255,.76),transparent 32%),linear-gradient(120deg,#fff5ef 0%,#f7f8fc 55%,#f2f6ff 100%); }
+.hero { position:relative; isolation:isolate; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr); grid-template-rows:auto auto auto auto; grid-template-areas:"icon art" "title art" "lead art" "cta art"; align-items:center; column-gap:clamp(34px,7vw,94px); max-width:1200px; min-height:550px; margin:0 auto; padding:64px clamp(26px,6vw,76px); border-radius:0 0 36px 36px; color:var(--ink); text-align:left; background:radial-gradient(circle at 78% 28%,rgba(255,206,170,.72),transparent 25%),radial-gradient(circle at 20% 80%,rgba(203,222,255,.76),transparent 32%),linear-gradient(120deg,#fff5ef 0%,#f7f8fc 55%,#f2f6ff 100%); }
 .hero::before { content:""; position:absolute; z-index:-1; width:310px; height:310px; left:-125px; top:-155px; border-radius:50%; border:1px solid rgba(215,107,61,.14); box-shadow:0 0 0 28px rgba(215,107,61,.035),0 0 0 58px rgba(215,107,61,.025); }
-.hero-icon { width:92px; height:92px; margin:0 auto 18px; border:1px solid rgba(255,255,255,.8); border-radius:25px; box-shadow:0 18px 44px rgba(60,54,75,.2); }
-.hero h1 { margin:0; font-size:clamp(2.7rem,7vw,4.8rem); font-weight:740; line-height:1.08; letter-spacing:-.065em; }
+.hero-icon { grid-area:icon; width:74px; height:74px; margin:0 0 12px; border:1px solid rgba(255,255,255,.8); border-radius:25px; box-shadow:0 18px 44px rgba(60,54,75,.2); }
+.hero h1 { grid-area:title; margin:0; font-size:clamp(2.7rem,7vw,4.8rem); font-weight:740; line-height:1.08; letter-spacing:-.065em; }
 .hero h1 small { display:block; margin-top:7px; color:var(--muted); font-size:.32em; font-weight:600; letter-spacing:-.02em; }
-.hero p { max-width:670px; margin:18px auto 0; color:#56647a; font-size:clamp(1rem,2.1vw,1.18rem); line-height:1.7; }
-.hero .badge { display:inline-flex; align-items:center; justify-content:center; margin-top:26px; padding:12px 25px; border:1px solid rgba(255,255,255,.36); border-radius:999px; color:#fff; background:linear-gradient(135deg,var(--court),var(--court-dark)); box-shadow:0 10px 24px rgba(167,71,39,.2); font-weight:650; text-decoration:none; transition:transform .18s,box-shadow .18s; }
+.hero p { grid-area:lead; max-width:530px; margin:17px 0 0; color:#56647a; font-size:clamp(1rem,2.1vw,1.18rem); line-height:1.7; }
+.hero .badge { grid-area:cta; justify-self:start; display:inline-flex; align-items:center; justify-content:center; margin-top:26px; padding:12px 25px; border:1px solid rgba(255,255,255,.36); border-radius:999px; color:#fff; background:linear-gradient(135deg,var(--court),var(--court-dark)); box-shadow:0 10px 24px rgba(167,71,39,.2); font-weight:650; text-decoration:none; transition:transform .18s,box-shadow .18s; }
 .hero .badge:hover { transform:translateY(-2px); box-shadow:0 14px 28px rgba(167,71,39,.24); }
 section { max-width:1080px; margin:0 auto; padding:72px 26px 68px; }
 section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3rem); font-weight:720; letter-spacing:-.05em; text-align:center; }
@@ -43,6 +44,33 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
 .footer a:hover { color:var(--court); }
 @media (max-width:640px) { .hero { min-height:0; padding:78px 20px 58px; border-radius:0 0 28px 28px; } .hero-icon { width:78px;height:78px;border-radius:22px; } section { padding:54px 18px 48px; } .features { grid-template-columns:1fr; gap:12px; } .feature { min-height:0; } .lang-bar { top:12px; right:12px; } .lang-bar select { max-width:150px; padding:7px 26px 7px 10px; font-size:.82rem; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+
+.hero-art { position:relative; grid-area:art; display:grid; min-height:370px; place-items:center; isolation:isolate; }
+.court-glow { position:absolute; z-index:-1; width:min(390px,100%); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 36% 35%,#fff 0,#ffe0c5 45%,#f1c5a6 100%); opacity:.8; }
+.game-card { position:relative; width:min(355px,100%); padding:18px; border:1px solid #ffffffd9; border-radius:25px; background:#ffffffed; box-shadow:0 26px 70px #653b2b25; transform:rotate(2deg); }
+.game-card-top,.game-card-foot { display:flex; align-items:center; gap:9px; color:#7d6255; font-size:.65rem; font-weight:750; letter-spacing:.11em; }
+.live-mark { width:8px; height:8px; border-radius:50%; background:#d7764b; box-shadow:0 0 0 4px #d7764b20; }
+.game-menu { margin-left:auto; letter-spacing:.12em; }
+.court-diagram { position:relative; height:105px; overflow:hidden; margin:16px 0 14px; border:1px solid #f0d6c5; border-radius:16px; background:linear-gradient(90deg,#f7e4d6,#fff4ea); }
+.court-diagram::before { content:""; position:absolute; inset:0 50%; border-left:1px solid #e3c7b5; }
+.court-diagram::after { content:""; position:absolute; width:78px; height:78px; left:calc(50% - 39px); top:12px; border:1px solid #e3c7b5; border-radius:50%; }
+.court-diagram i,.court-diagram b { position:absolute; top:23px; width:65px; height:60px; border:1px solid #e3c7b5; }
+.court-diagram i { left:-1px; border-left:0; border-radius:0 60px 60px 0; }
+.court-diagram b { right:-1px; border-right:0; border-radius:60px 0 0 60px; }
+.court-diagram em { position:absolute; top:51px; left:27%; width:46%; height:2px; background:#d9875d; transform:rotate(-9deg); }
+.stat-head,.stat-row { display:grid; grid-template-columns:18px minmax(60px,1fr) repeat(3,32px); align-items:center; gap:9px; }
+.stat-head { margin:0 0 9px; color:#9a8276; font-size:.55rem; font-weight:750; letter-spacing:.07em; }
+.stat-row { min-height:34px; border-top:1px solid #f1e9e4; }
+.player-dot { width:18px; height:18px; border-radius:7px; background:#e7a67e; }
+.player-dot.two { background:#8198bb; }.player-dot.three { background:#89a98f; }
+.stat-line { height:5px; border-radius:8px; background:#eadfd8; }.stat-line.long { width:85%; }.stat-line.medium { width:67%; }
+.stat-row b { height:5px; border-radius:8px; background:#d9e4ed; }
+.game-card-foot { margin-top:14px; padding-top:12px; border-top:1px solid #f1e9e4; }
+.progress-line { flex:1; height:5px; overflow:hidden; border-radius:10px; background:#ede8e4; }.progress-line i { display:block; width:63%; height:100%; border-radius:10px; background:#d7784d; }
+.float-ball { position:absolute; right:2%; bottom:7%; display:grid; width:62px; height:62px; place-items:center; border:1px solid #ffffffc7; border-radius:20px; background:#fff9f3; box-shadow:0 14px 35px #673e2b20; font-size:1.75rem; transform:rotate(-10deg); }
+.stores { display:none; }
+@media(max-width:760px){.lang-bar{padding:12px 18px}.hero{grid-template-columns:1fr;grid-template-areas:"icon" "title" "lead" "cta" "art";gap:0;min-height:0;padding:54px 24px 34px;text-align:left}.hero-art{width:min(100%,400px);min-height:315px;margin:10px auto 0}.game-card{max-width:330px}.float-ball{right:0;bottom:4%}}
+
 </style>
 </head>
 <body>
@@ -68,6 +96,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Record every basketball game with automatic player and team stats. AI summaries, Bluetooth sync, iCloud — your basketball journey, documented.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Download on the App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Core Features</h2>
@@ -82,9 +124,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud Storage</h3><p>Sync game data to iCloud for cross-device access and restore.</p></div>
   </div>
 </section>
-<div class="stores"><p>Coming soon on the App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">Promotional Page</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">Privacy Policy</a>
   <a href="terms-of-use.html">Terms of Use (EULA)</a>
   <a href="support.html">Support</a><br><br>
@@ -100,6 +141,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>篮球生涯<small>Basketball Career</small></h1>
   <p>记录每一场篮球比赛，自动统计球员与球队数据。AI 赛后总结、蓝牙协同记分、iCloud 同步，让你的篮球生涯有据可查。</p>
   <a class="badge" href="https://apps.apple.com/cn/app/id6773215187">App Store 下载</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>核心功能</h2>
@@ -114,9 +169,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud 同步</h3><p>将比赛数据同步到 iCloud，跨设备查看与恢复。</p></div>
   </div>
 </section>
-<div class="stores"><p>即将上架 App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/cn/app/id6773215187">宣传页面</a>
+  <a href="https://apps.apple.com/cn/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">隐私政策</a>
   <a href="terms-of-use.html">使用条款（EULA）</a>
   <a href="support.html">支持</a><br><br>
@@ -132,6 +186,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>籃球生涯<small>Basketball Career</small></h1>
   <p>記錄每一場籃球比賽，自動統計球員與球隊數據。AI 賽後總結、藍牙協同記分、iCloud 同步，讓你的籃球生涯有據可查。</p>
   <a class="badge" href="https://apps.apple.com/cn/app/id6773215187">App Store 下載</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>核心功能</h2>
@@ -146,9 +214,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud 同步</h3><p>將比賽資料同步到 iCloud，跨裝置檢視與恢復。</p></div>
   </div>
 </section>
-<div class="stores"><p>即將上架 App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/cn/app/id6773215187">宣傳頁面</a>
+  <a href="https://apps.apple.com/cn/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">隱私政策</a>
   <a href="terms-of-use.html">使用條款（EULA）</a>
   <a href="support.html">支援</a><br><br>
@@ -164,6 +231,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Zeichne jedes Spiel auf, mit automatischen Statistiken. KI-Zusammenfassungen, Bluetooth-Sync, iCloud — deine Basketball-Reise, dokumentiert.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Lade im App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Kernfunktionen</h2>
@@ -178,9 +259,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud-Speicher</h3><p>Spieldaten in iCloud sichern für geräteübergreifenden Zugriff.</p></div>
   </div>
 </section>
-<div class="stores"><p>Demnächst im App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">Promo-Seite</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">Datenschutz</a>
   <a href="terms-of-use.html">Nutzungsbedingungen (EULA)</a>
   <a href="support.html">Support</a><br><br>
@@ -196,6 +276,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Registra cada partido con estadísticas automáticas. Resúmenes IA, sincronización Bluetooth, iCloud — tu trayectoria, documentada.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Descargar en App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Funciones principales</h2>
@@ -210,9 +304,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>Almacenamiento iCloud</h3><p>Sincroniza datos en iCloud para acceso multidispositivo.</p></div>
   </div>
 </section>
-<div class="stores"><p>Próximamente en App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">Página promocional</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">Privacidad</a>
   <a href="terms-of-use.html">Términos (EULA)</a>
   <a href="support.html">Soporte</a><br><br>
@@ -228,6 +321,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Enregistrez chaque match avec des statistiques automatiques. Résumés IA, Bluetooth, iCloud — votre parcours basketball, documenté.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Télécharger sur l'App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Fonctionnalités</h2>
@@ -242,9 +349,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud</h3><p>Données synchronisées sur iCloud, accès multi-appareils.</p></div>
   </div>
 </section>
-<div class="stores"><p>Bientôt sur l'App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">Page promotionnelle</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">Confidentialité</a>
   <a href="terms-of-use.html">Conditions (EULA)</a>
   <a href="support.html">Support</a><br><br>
@@ -260,6 +366,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Registra ogni partita con statistiche automatiche. Riassunti AI, Bluetooth, iCloud — il tuo percorso nel basket, documentato.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Scarica su App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Funzionalità</h2>
@@ -274,9 +394,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud</h3><p>Dati sincronizzati su iCloud per accesso multi-dispositivo.</p></div>
   </div>
 </section>
-<div class="stores"><p>Prossimamente su App Store</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">Pagina promozionale</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">Privacy</a>
   <a href="terms-of-use.html">Termini (EULA)</a>
   <a href="support.html">Supporto</a><br><br>
@@ -292,6 +411,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>すべての試合を記録し、選手・チームの統計を自動集計。AIサマリー、Bluetooth同期、iCloud対応。</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">App Storeでダウンロード</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>主な機能</h2>
@@ -306,9 +439,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud保存</h3><p>試合データをiCloudに同期、デバイス間でアクセス。</p></div>
   </div>
 </section>
-<div class="stores"><p>近日App Storeに公開予定</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">プロモーションページ</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">プライバシー</a>
   <a href="terms-of-use.html">利用規約（EULA）</a>
   <a href="support.html">サポート</a><br><br>
@@ -324,6 +456,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>모든 경기를 기록하고 선수와 팀 통계를 자동 집계합니다. AI 요약, Bluetooth 동기화, iCloud 지원.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">App Store에서 다운로드</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>핵심 기능</h2>
@@ -338,9 +484,8 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud</h3><p>경기 데이터를 iCloud에 동기화, 기기 간 액세스.</p></div>
   </div>
 </section>
-<div class="stores"><p>곧 App Store 출시 예정</p></div>
 <div class="footer">
-  <a href="https://apps.apple.com/app/id6773215187">프로모션 페이지</a>
+  <a href="https://apps.apple.com/app/id6773215187">App Store</a>
   <a href="privacy-policy.html">개인정보처리방침</a>
   <a href="terms-of-use.html">이용약관 (EULA)</a>
   <a href="support.html">지원</a><br><br>
@@ -356,6 +501,20 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
   <h1>Basketball Career<small>篮球生涯</small></h1>
   <p>Записывайте каждую игру с автоматической статистикой. ИИ-резюме, Bluetooth, iCloud — ваш баскетбольный путь задокументирован.</p>
   <a class="badge" href="https://apps.apple.com/app/id6773215187">Загрузить в App Store</a>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="court-glow"></div>
+    <div class="game-card">
+      <div class="game-card-top"><span class="live-mark"></span><span>GAME LOG</span><span class="game-menu">•••</span></div>
+      <div class="court-diagram"><i></i><b></b><em></em></div>
+      <div class="stat-head"><span>PLAYER</span><span>PTS</span><span>REB</span><span>AST</span></div>
+      <div class="stat-row"><i class="player-dot one"></i><span class="stat-line long"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot two"></i><span class="stat-line"></span><b></b><b></b><b></b></div>
+      <div class="stat-row"><i class="player-dot three"></i><span class="stat-line medium"></span><b></b><b></b><b></b></div>
+      <div class="game-card-foot"><span>CAREER</span><span class="progress-line"><i></i></span><span>↗</span></div>
+    </div>
+    <div class="float-ball">🏀</div>
+  </div>
 </div>
 <section>
   <h2>Основные функции</h2>
@@ -370,7 +529,6 @@ section h2 { margin:0 0 28px; color:var(--ink); font-size:clamp(1.7rem,3vw,2.3re
     <div class="feature"><div class="icon">☁️</div><h3>iCloud</h3><p>Синхронизируйте данные в iCloud для доступа с разных устройств.</p></div>
   </div>
 </section>
-<div class="stores"><p>Скоро в App Store</p></div>
 <div class="footer">
   <a href="https://apps.apple.com/app/id6773215187">Рекламная страница</a>
   <a href="privacy-policy.html">Конфиденциальность</a>

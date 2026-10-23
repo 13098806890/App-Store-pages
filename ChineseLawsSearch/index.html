@@ -15,7 +15,8 @@
 * { box-sizing:border-box; }
 html { background:var(--wash); scroll-behavior:smooth; }
 body { margin:0; color:var(--ink); background:var(--wash); line-height:1.65; }
-.lang-bar { position:absolute; z-index:3; top:20px; right:24px; }
+.lang-bar { position:relative; z-index:3; display:flex; align-items:center; justify-content:space-between; max-width:1120px; margin:0 auto; padding:15px 26px; }
+.lang-bar::before { content:"律疏 · Lvshu"; color:var(--ink); font-size:1.03rem; font-weight:760; letter-spacing:-.035em; }
 .lang-bar select { max-width:180px; padding:9px 30px 9px 12px; border:1px solid rgba(255,255,255,.7); border-radius:12px; outline:none; color:var(--ink); background:rgba(255,255,255,.84); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font:inherit; font-size:.88rem; }
 .lang-content { display:none; }
 .lang-content.active { display:block; }
@@ -40,6 +41,26 @@ footer a { color:var(--law-dark); text-decoration:none; }
 footer a:hover { color:var(--law); text-decoration:underline; }
 @media (max-width:640px) { header { padding:78px 20px 58px; border-radius:0 0 28px 28px; } header h1 { font-size:clamp(2.8rem,14vw,4.3rem); } section { padding:54px 18px 48px; } .features { grid-template-columns:1fr; gap:12px; margin-top:24px; } .feature { min-height:0; } .lang-bar { top:12px; right:12px; } .lang-bar select { max-width:150px; padding:7px 26px 7px 10px; font-size:.82rem; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+
+.law-hero { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.85fr); align-items:center; gap:clamp(35px,8vw,100px); max-width:1200px; margin:0 auto; padding:70px clamp(28px,7vw,90px); text-align:left; }
+.law-hero-copy { position:relative; z-index:1; }
+.law-eyebrow { margin:0 0 13px !important; color:var(--law-dark) !important; font-size:.76rem !important; font-weight:760; letter-spacing:.1em; }
+.law-hero h1 { font-size:clamp(3.5rem,8vw,6.1rem); }
+.law-hero p:not(.law-eyebrow) { max-width:530px; margin:16px 0 0; }
+.law-hero .badge { margin-top:23px; padding:0; border:0; background:transparent; box-shadow:none; }
+.law-preview { position:relative; overflow:hidden; padding:19px; border:1px solid #ffffffd9; border-radius:25px; background:#ffffffed; box-shadow:0 28px 72px rgba(41,82,86,.17); transform:rotate(1.5deg); }
+.law-preview::before { content:""; position:absolute; z-index:-1; top:-120px; right:-120px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,#c9e6dd 0,#e9f4f0 62%,transparent 70%); }
+.law-window-top { display:flex; align-items:center; gap:10px; color:#607a79; font-size:.64rem; font-weight:760; letter-spacing:.1em; }
+.law-mark { display:grid; width:30px; height:30px; place-items:center; border-radius:10px; color:#fff; background:var(--law); font-size:.95rem; letter-spacing:0; }
+.offline-pill { margin-left:auto; padding:5px 8px; border-radius:99px; color:#407565; background:#e4f2ec; font-size:.56rem; }
+.law-search { display:flex; align-items:center; gap:10px; margin:19px 0 17px; padding:11px 12px; border:1px solid var(--line); border-radius:12px; color:#809098; background:#f8faf9; font-size:.76rem; }
+.law-search>span:first-child { color:var(--law-dark); font-size:1.2rem; }.law-search i { margin-left:auto; padding:2px 5px; border:1px solid #d9e3e0; border-radius:5px; font-size:.58rem; font-style:normal; }
+.law-count { display:flex; align-items:baseline; gap:8px; padding:2px 2px 13px; color:#7b8a8f; font-size:.72rem; }.law-count strong { color:var(--ink); font-size:1.7rem; letter-spacing:-.06em; }
+.law-categories { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }.law-categories span { padding:5px 9px; border:1px solid #e4ebe8; border-radius:99px; color:#55706d; background:#f7faf8; font-size:.63rem; }
+.law-result { display:flex; align-items:center; gap:11px; padding:13px 12px; border:1px solid #e4ebe8; border-radius:13px; background:#fff; }.result-symbol { display:grid; flex:0 0 33px; height:36px; place-items:center; border-radius:10px; color:var(--law-dark); background:#e9f3ef; font-size:1.15rem; }.law-result div { display:grid; gap:2px; min-width:0; }.law-result b { overflow:hidden; color:#344b4b; font-size:.7rem; text-overflow:ellipsis; white-space:nowrap; }.law-result small { color:#8b9998; font-size:.59rem; }.result-arrow { margin-left:auto; color:var(--law); }
+.law-lines { display:grid; gap:7px; padding:14px 4px 0; }.law-lines i { height:5px; border-radius:5px; background:#edf1ef; }.law-lines i:nth-child(1){width:96%}.law-lines i:nth-child(2){width:77%}.law-lines i:nth-child(3){width:87%}
+@media(max-width:760px){.lang-bar{padding:12px 18px}.law-hero{grid-template-columns:1fr;gap:30px;padding:51px 22px 38px;text-align:left}.law-hero h1{font-size:clamp(3.5rem,16vw,4.5rem)}.law-preview{width:min(100%,440px);margin:0 auto;transform:rotate(.7deg)}}
+@media(max-width:640px){header.law-hero{padding:51px 22px 38px}.lang-bar{top:auto;right:auto}.lang-bar select{max-width:145px}}
 </style>
 </head>
 <body>
@@ -52,13 +73,24 @@ footer a:hover { color:var(--law); text-decoration:underline; }
 </div>
 
 <div class="lang-content active" id="content-zh-Hans">
-  <header>
-    <h1>律疏</h1>
-    <p>1,759 部现行法律法规，离线可用，AI 多专家法律咨询</p>
-    <div class="badge">
-      <a href="https://apps.apple.com/app/id6767801314">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-      </a>
+  <header class="law-hero">
+    <div class="law-hero-copy">
+      <p class="law-eyebrow">中国法律法规 · 离线检索 · AI 咨询</p>
+      <h1>律疏</h1>
+      <p>1,759 部现行法律法规，离线可用，AI 多专家法律咨询</p>
+      <div class="badge">
+        <a href="https://apps.apple.com/app/id6767801314">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+        </a>
+      </div>
+    </div>
+    <div class="law-preview" aria-hidden="true">
+      <div class="law-window-top"><span class="law-mark">律</span><span>LAW LIBRARY</span><span class="offline-pill">OFFLINE</span></div>
+      <div class="law-search"><span>⌕</span><span>法律名称 · 条文内容</span><i>⌘ K</i></div>
+      <div class="law-count"><strong>1,759</strong><span>部现行法律法规</span></div>
+      <div class="law-categories"><span>民法</span><span>刑法</span><span>行政法</span><span>商法</span></div>
+      <div class="law-result"><span class="result-symbol">§</span><div><b>中华人民共和国民法典</b><small>法律库 · 按章节与条文浏览</small></div><span class="result-arrow">↗</span></div>
+      <div class="law-lines"><i></i><i></i><i></i></div>
     </div>
   </header>
 
@@ -108,13 +140,24 @@ footer a:hover { color:var(--law); text-decoration:underline; }
 </div>
 
 <div class="lang-content" id="content-en">
-  <header>
-    <h1>Lvshu</h1>
-    <p>1,759 current Chinese laws and regulations, offline, AI-powered legal advisor</p>
-    <div class="badge">
-      <a href="https://apps.apple.com/app/id6767801314">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
-      </a>
+  <header class="law-hero">
+    <div class="law-hero-copy">
+      <p class="law-eyebrow">CHINESE LAW · OFFLINE SEARCH · AI ASSISTANT</p>
+      <h1>Lvshu</h1>
+      <p>Search 1,759 current Chinese laws and regulations offline, with an AI legal advisor for deeper questions.</p>
+      <div class="badge">
+        <a href="https://apps.apple.com/app/id6767801314">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+        </a>
+      </div>
+    </div>
+    <div class="law-preview" aria-hidden="true">
+      <div class="law-window-top"><span class="law-mark">律</span><span>LAW LIBRARY</span><span class="offline-pill">OFFLINE</span></div>
+      <div class="law-search"><span>⌕</span><span>Search titles and articles</span><i>⌘ K</i></div>
+      <div class="law-count"><strong>1,759</strong><span>current Chinese laws</span></div>
+      <div class="law-categories"><span>Civil</span><span>Criminal</span><span>Admin</span><span>Business</span></div>
+      <div class="law-result"><span class="result-symbol">§</span><div><b>China's Civil Code</b><small>Browse by book, chapter, and article</small></div><span class="result-arrow">↗</span></div>
+      <div class="law-lines"><i></i><i></i><i></i></div>
     </div>
   </header>
 
