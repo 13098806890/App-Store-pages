@@ -165,6 +165,8 @@ function render(lang) {
     content = `<main class="content-page"><p class="eyebrow">GIFBloom</p><h1>${esc(d.support[0])}</h1><p class="lede">${esc(d.support[1])}</p><h2>${esc(d.support[2])}</h2><div class="faq-list">${faq}</div><section class="contact-card"><h2>${esc(d.support[7])}</h2><p>${esc(d.support[8])} <a href="mailto:${email}">${email}</a>.</p></section></main>`;
     document.title = `${d.support[0]} — GIFBloom`;
     document.querySelector('meta[name="description"]').content = d.support[1];
+    document.querySelector('meta[property="og:title"]').content = document.title;
+    document.querySelector('meta[property="og:description"]').content = d.support[1];
   } else if (page === "privacy") {
     const privacySections = d.privacy.slice(1);
     privacySections.splice(privacySections.length - 1, 0, purchasePrivacy[lang]);
@@ -176,10 +178,14 @@ function render(lang) {
     content = `<main class="content-page privacy-page"><p class="eyebrow">GIFBloom</p><h1>${esc(nav[2])}</h1><p class="lede">${esc(d.privacy[0])}</p><p class="updated">${esc(labels[lang])}: ${esc(updated)}</p>${sections}</main>`;
     document.title = `${nav[2]} — GIFBloom`;
     document.querySelector('meta[name="description"]').content = d.privacy[0];
+    document.querySelector('meta[property="og:title"]').content = document.title;
+    document.querySelector('meta[property="og:description"]').content = d.privacy[0];
   } else {
     content = `<main><section class="hero"><div class="hero-copy"><p class="eyebrow">${esc(d.land[2])}</p><h1>GIFBloom</h1><p class="tagline">${esc(d.land[0])}</p><p class="lede">${esc(d.land[1])}</p><a class="support-link" href="support.html?lang=${encodeURIComponent(lang)}">${esc(nav[1])} <span aria-hidden="true">→</span></a></div><img class="app-icon" src="appicon.png" alt="GIFBloom app icon"></section><section class="features-section"><p class="eyebrow">GIFBloom</p><h2>${esc(d.land[0])}</h2><div class="feature-grid">${featureCards(d)}</div></section><aside class="privacy-note"><span class="privacy-mark" aria-hidden="true">⌂</span><div><h2>${esc(nav[2])}</h2><p>${esc(d.land[9])}</p></div><a href="privacy-policy.html?lang=${encodeURIComponent(lang)}" aria-label="${esc(nav[2])}">↗</a></aside></main>`;
     document.title = `GIFBloom — ${d.land[0]}`;
     document.querySelector('meta[name="description"]').content = d.land[1];
+    document.querySelector('meta[property="og:title"]').content = document.title;
+    document.querySelector('meta[property="og:description"]').content = d.land[1];
   }
   shell(lang, content);
 }

@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>篮球生涯 — Basketball Career</title>
+<meta name="description" content="Record basketball games, track player and team stats, and follow your career with AI summaries, Bluetooth sync, and iCloud. Available for iPhone and iPad.">
+<link rel="canonical" href="https://13098806890.github.io/App-Store-pages/BasketballRecord/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Basketball Career — Basketball Scorekeeping &amp; Stats">
+<meta property="og:description" content="Record basketball games, track player and team stats, and follow your career with AI summaries, Bluetooth sync, and iCloud.">
+<meta property="og:url" content="https://13098806890.github.io/App-Store-pages/BasketballRecord/">
+<title>Basketball Career — Basketball Scorekeeping &amp; Stats</title>
 <style>
 :root { color-scheme: light; --ink:#233047; --muted:#66758b; --line:#e6ebf2; --wash:#f5f7fb; --surface:#fff; --court:#d76b3d; --court-dark:#a74727; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; }
 * { box-sizing:border-box; }
@@ -387,6 +393,9 @@ function switchLang(code) {
   const target = document.getElementById('lang-' + code);
   if (target) target.classList.add('active');
   document.getElementById('langSelect').value = code;
+  document.documentElement.lang = code === 'zh-Hant-TW' ? 'zh-Hant' : code;
+  const titles = { en: 'Basketball Career — Basketball Scorekeeping & Stats', 'zh-Hans': '篮球生涯 — 篮球比赛记录与统计', 'zh-Hant-TW': '籃球生涯 — 籃球比賽記錄與統計', de: 'Basketball Career — Basketball-Statistiken', es: 'Basketball Career — Estadísticas de baloncesto', fr: 'Basketball Career — Statistiques de basket', it: 'Basketball Career — Statistiche di basket', ja: 'Basketball Career — バスケットボール記録', ko: 'Basketball Career — 농구 기록 및 통계', ru: 'Basketball Career — статистика баскетбола' };
+  document.title = titles[code] || titles.en;
   localStorage.setItem('preferredLang', code);
 }
 (function() {

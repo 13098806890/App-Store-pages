@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://13098806890.github.io/App-Store-pages/sitemap.xml

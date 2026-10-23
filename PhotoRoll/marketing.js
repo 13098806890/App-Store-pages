@@ -293,6 +293,8 @@
   document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
   document.title = titles[language][0];
   document.querySelector("[data-localized-description]").content = titles[language][1];
+  document.querySelector('meta[property="og:title"]').content = titles[language][0];
+  document.querySelector('meta[property="og:description"]').content = titles[language][1];
   document.querySelectorAll("[data-zh][data-en]").forEach((element) => {
     element.textContent = textFor(element.dataset.zh);
   });

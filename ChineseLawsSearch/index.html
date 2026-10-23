@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>律疏 — 中国法律法规查询与AI咨询</title>
+  <meta name="description" content="律疏提供 1,759 部现行中国法律法规的离线检索，并提供 AI 多专家法律咨询。查看产品功能、支持信息与隐私政策。">
+  <link rel="canonical" href="https://13098806890.github.io/App-Store-pages/ChineseLawsSearch/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="律疏 — 中国法律法规查询与 AI 咨询">
+  <meta property="og:description" content="检索 1,759 部现行中国法律法规，离线可用，并获取 AI 多专家法律咨询。">
+  <meta property="og:url" content="https://13098806890.github.io/App-Store-pages/ChineseLawsSearch/">
+  <title>律疏 — 中国法律法规查询与 AI 咨询</title>
   <style>
 :root { color-scheme:light; --ink:#253246; --muted:#68768b; --line:#e5eaf0; --wash:#f5f7fb; --surface:#fff; --law:#356f77; --law-dark:#24535a; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Segoe UI",sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; }
 * { box-sizing:border-box; }
@@ -162,6 +168,11 @@ function switchLang(code) {
   document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('#content-' + code).forEach(el => el.classList.add('active'));
   document.getElementById('langSelect').value = code;
+  document.documentElement.lang = code === 'zh-Hans' ? 'zh-CN' : 'en';
+  document.title = code === 'zh-Hans' ? '律疏 — 中国法律法规查询与 AI 咨询' : 'ChineseLawsSearch — China Laws and Regulations Search';
+  document.querySelector('meta[name="description"]').content = code === 'zh-Hans'
+    ? '律疏提供 1,759 部现行中国法律法规的离线检索，并提供 AI 多专家法律咨询。查看产品功能、支持信息与隐私政策。'
+    : 'Search 1,759 current Chinese laws and regulations offline, with AI legal consultation from multiple specialist perspectives.';
   localStorage.setItem('lushuLang', code);
 }
 (function() {
