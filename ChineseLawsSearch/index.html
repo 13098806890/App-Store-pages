@@ -5,38 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>律疏 — 中国法律法规查询与AI咨询</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #1d1d1f; background: #fff; }
-    .lang-bar { text-align: right; padding: 12px 24px; }
-    .lang-bar select { padding: 4px 10px; font-size: .9em; border-radius: 6px; border: 1px solid #ccc; outline: none; }
-    .lang-content { display: none; }
-    .lang-content.active { display: block; }
-    header { background: #f5f5f7; padding: 60px 24px 48px; text-align: center; }
-    header h1 { font-size: 48px; font-weight: 700; letter-spacing: -1px; }
-    header p { font-size: 20px; color: #6e6e73; margin-top: 12px; }
-    .badge { display: inline-block; margin-top: 28px; }
-    .badge img { height: 52px; }
-    section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 40px; }
-    .feature { background: #f5f5f7; border-radius: 16px; padding: 28px 24px; }
-    .feature .icon { font-size: 32px; margin-bottom: 12px; }
-    .feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
-    .feature p { font-size: 15px; color: #6e6e73; line-height: 1.6; }
-    h2 { font-size: 28px; font-weight: 700; text-align: center; }
-    footer { background: #f5f5f7; text-align: center; padding: 32px 24px; font-size: 13px; color: #6e6e73; }
-    footer a { color: #0071e3; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #111; color: #ddd; }
-      .lang-bar select { background: #222; color: #ddd; border-color: #444; }
-      header { background: #1a1a1a; }
-      header p { color: #999; }
-      .feature { background: #1a1a1a; }
-      .feature p { color: #999; }
-      .feature h3 { color: #e0e0e0; }
-      footer { background: #1a1a1a; }
-    }
-  </style>
+:root { color-scheme:light; --ink:#253246; --muted:#68768b; --line:#e5eaf0; --wash:#f5f7fb; --surface:#fff; --law:#356f77; --law-dark:#24535a; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Segoe UI",sans-serif; font-synthesis:none; text-rendering:optimizeLegibility; }
+* { box-sizing:border-box; }
+html { background:var(--wash); scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); background:var(--wash); line-height:1.65; }
+.lang-bar { position:absolute; z-index:3; top:20px; right:24px; }
+.lang-bar select { max-width:180px; padding:9px 30px 9px 12px; border:1px solid rgba(255,255,255,.7); border-radius:12px; outline:none; color:var(--ink); background:rgba(255,255,255,.84); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font:inherit; font-size:.88rem; }
+.lang-content { display:none; }
+.lang-content.active { display:block; }
+header { position:relative; isolation:isolate; overflow:hidden; padding:92px 24px 76px; border-radius:0 0 36px 36px; background:radial-gradient(circle at 77% 28%,rgba(195,225,214,.77),transparent 24%),radial-gradient(circle at 20% 84%,rgba(202,219,247,.76),transparent 32%),linear-gradient(120deg,#eff7f4 0%,#f7f8fc 56%,#eef5f8 100%); text-align:center; }
+header::before { content:""; position:absolute; z-index:-1; width:320px; height:320px; right:-165px; bottom:-205px; border:1px solid rgba(53,111,119,.14); border-radius:50%; box-shadow:0 0 0 28px rgba(53,111,119,.035),0 0 0 58px rgba(53,111,119,.025); }
+header h1 { margin:0; color:var(--ink); font-size:clamp(2.8rem,8vw,5.4rem); font-weight:750; letter-spacing:-.075em; line-height:1.05; }
+header p { max-width:760px; margin:18px auto 0; color:#56677a; font-size:clamp(1.02rem,2.4vw,1.28rem); line-height:1.7; }
+.badge { display:inline-flex; align-items:center; justify-content:center; margin-top:26px; padding:10px 15px; border:1px solid rgba(255,255,255,.8); border-radius:14px; background:rgba(255,255,255,.74); box-shadow:0 8px 22px rgba(37,50,70,.06); }
+.badge img { display:block; height:48px; }
+section { max-width:1080px; margin:0 auto; padding:70px 26px 68px; }
+section h2 { margin:0; color:var(--ink); font-size:clamp(1.8rem,3.4vw,2.4rem); font-weight:720; letter-spacing:-.05em; text-align:center; }
+.features { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:30px; }
+.feature { min-height:205px; padding:24px 23px; border:1px solid var(--line); border-radius:20px; background:var(--surface); box-shadow:0 8px 25px rgba(37,50,70,.035); transition:transform .2s,box-shadow .2s; }
+.feature:hover { transform:translateY(-3px); box-shadow:0 14px 30px rgba(37,50,70,.08); }
+.feature .icon { display:grid; width:44px; height:44px; place-items:center; margin-bottom:18px; border-radius:14px; color:var(--law-dark); background:#eaf4f1; font-size:1.45rem; }
+.feature h3 { margin:0 0 7px; color:var(--ink); font-size:1.06rem; font-weight:680; letter-spacing:-.02em; }
+.feature p { margin:0; color:var(--muted); font-size:.91rem; line-height:1.65; }
+footer { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 18px; padding:30px 20px 36px; border-top:1px solid var(--line); color:#7a8799; background:#fff; font-size:.88rem; text-align:center; }
+footer p { margin:0; }
+footer p + p { flex-basis:100%; }
+footer a { color:var(--law-dark); text-decoration:none; }
+footer a:hover { color:var(--law); text-decoration:underline; }
+@media (max-width:640px) { header { padding:78px 20px 58px; border-radius:0 0 28px 28px; } header h1 { font-size:clamp(2.8rem,14vw,4.3rem); } section { padding:54px 18px 48px; } .features { grid-template-columns:1fr; gap:12px; margin-top:24px; } .feature { min-height:0; } .lang-bar { top:12px; right:12px; } .lang-bar select { max-width:150px; padding:7px 26px 7px 10px; font-size:.82rem; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none !important; } }
+</style>
 </head>
 <body>
 
@@ -50,9 +48,9 @@
 <div class="lang-content active" id="content-zh-Hans">
   <header>
     <h1>律疏</h1>
-    <p>1526部现行法律法规，离线可用，AI多专家法律咨询</p>
+    <p>1,759 部现行法律法规，离线可用，AI 多专家法律咨询</p>
     <div class="badge">
-      <a href="https://apps.apple.com/app/id律疏appid">
+      <a href="https://apps.apple.com/app/id6767801314">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
       </a>
     </div>
@@ -64,7 +62,7 @@
       <div class="feature">
         <div class="icon">📚</div>
         <h3>法律浏览</h3>
-        <p>收录1526部现行法律法规，按七大法律部门分类，支持编章节条层级导航，离线可用。</p>
+        <p>收录 1,759 部现行法律法规，按七大法律部门分类，支持编章节条层级导航，离线可用。</p>
       </div>
       <div class="feature">
         <div class="icon">🔍</div>
@@ -79,17 +77,17 @@
       <div class="feature">
         <div class="icon">🤖</div>
         <h3>AI法律顾问</h3>
-        <p>多专家路由系统自动分析法律问题，引用真实法条作为依据，支持多轮追问。</p>
+        <p>新用户可免费咨询 5 次；PRO 订阅每月包含 150 次云端咨询。同一对话可继续追问，PRO 用户也可配置自有 API Key 无限使用。</p>
       </div>
       <div class="feature">
         <div class="icon">☁️</div>
         <h3>iCloud同步</h3>
-        <p>阅读进度与对话记录自动同步至iCloud，多设备无缝切换。</p>
+        <p>iPhone 和 iPad 可通过 iCloud 同步部分阅读与对话数据；Mac 数据保存在本机。</p>
       </div>
       <div class="feature">
         <div class="icon">🔒</div>
         <h3>隐私优先</h3>
-        <p>API Key加密存储于系统Keychain，不上传至任何服务器。法律数据完全离线，无需账号。</p>
+        <p>自有 API Key 存储于系统 Keychain。云端 AI 请求经腾讯云函数处理；法律数据完全离线，无需账号。</p>
       </div>
     </div>
   </section>
@@ -99,16 +97,16 @@
       <a href="support.html">支持与帮助</a> &nbsp;·&nbsp;
       <a href="privacy.html">隐私政策</a>
     </p>
-    <p style="margin-top: 12px;">&copy; 2025 谢东泽</p>
+    <p style="margin-top: 12px;">&copy; 2026 谢东泽</p>
   </footer>
 </div>
 
 <div class="lang-content" id="content-en">
   <header>
     <h1>Lvshu</h1>
-    <p>1,526 Chinese laws &amp; regulations, offline, AI-powered legal advisor</p>
+    <p>1,759 current Chinese laws and regulations, offline, AI-powered legal advisor</p>
     <div class="badge">
-      <a href="https://apps.apple.com/app/id律疏appid">
+      <a href="https://apps.apple.com/app/id6767801314">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
       </a>
     </div>
@@ -120,7 +118,7 @@
       <div class="feature">
         <div class="icon">📚</div>
         <h3>Law Browser</h3>
-        <p>1,526 laws organized by 7 legal categories, with hierarchical navigation by part, chapter, section, and article. Fully offline.</p>
+        <p>1,759 current laws organized by 7 legal categories, with hierarchical navigation by part, chapter, section, and article. Fully offline.</p>
       </div>
       <div class="feature">
         <div class="icon">🔍</div>
@@ -135,17 +133,17 @@
       <div class="feature">
         <div class="icon">🤖</div>
         <h3>AI Legal Advisor</h3>
-        <p>Multi-expert routing system automatically analyzes legal questions, cites real articles, and supports follow-up questions.</p>
+        <p>Five hosted consultations are free for new users. Pro includes 150 hosted consultations each month; subscribers can also use their own AI key without an app usage limit.</p>
       </div>
       <div class="feature">
         <div class="icon">☁️</div>
         <h3>iCloud Sync</h3>
-        <p>Reading progress and chat history sync seamlessly across all your devices via iCloud.</p>
+        <p>iPhone and iPad can sync some reading and chat data through iCloud; Mac data is stored locally.</p>
       </div>
       <div class="feature">
         <div class="icon">🔒</div>
         <h3>Privacy First</h3>
-        <p>API Key encrypted in system Keychain, never uploaded. Legal data fully offline, no account required.</p>
+        <p>Your own AI key is stored in the system Keychain. Hosted AI requests use Tencent Cloud Functions; legal data works offline without an account.</p>
       </div>
     </div>
   </section>
@@ -155,7 +153,7 @@
       <a href="support.html">Support</a> &nbsp;·&nbsp;
       <a href="privacy.html">Privacy Policy</a>
     </p>
-    <p style="margin-top: 12px;">&copy; 2025 谢东泽</p>
+    <p style="margin-top: 12px;">&copy; 2026 谢东泽</p>
   </footer>
 </div>
 

@@ -89,3 +89,45 @@ html[dir="rtl"] .faq p { padding-right: 0; padding-left: 30px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Keep the same calm, spacious visual language as PhotoRoll while retaining GIFBloom's violet identity. */
+:root {
+  --ink: #243047;
+  --muted: #68768b;
+  --line: #e5eaf2;
+  --wash: #f5f7fb;
+  --purple: #7161c8;
+  --purple-dark: #4f459b;
+}
+.topbar { min-height: 78px; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 0 0 36px 36px;
+  background:
+    radial-gradient(circle at 78% 34%, rgba(210, 200, 255, .72), transparent 27%),
+    radial-gradient(circle at 22% 84%, rgba(220, 225, 255, .72), transparent 30%),
+    linear-gradient(120deg, #f3efff 0%, #f8f7fc 56%, #f0edff 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -170px;
+  right: -130px;
+  width: 330px;
+  height: 330px;
+  border: 1px solid rgba(113, 97, 200, .13);
+  border-radius: 50%;
+  box-shadow: 0 0 0 28px rgba(113, 97, 200, .035), 0 0 0 58px rgba(113, 97, 200, .025);
+}
+.hero-copy, .app-icon { position: relative; z-index: 1; }
+.app-icon { box-shadow: 0 20px 58px rgba(68, 51, 137, .2); }
+.feature { transition: transform .2s, box-shadow .2s; }
+.feature:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(55, 37, 87, .08); }
+.support-link { border-radius: 999px; }
+.privacy-note { border-radius: 20px; }
+@media (max-width: 760px) {
+  .hero { border-radius: 0 0 28px 28px; }
+}
